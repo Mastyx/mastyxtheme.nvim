@@ -2,7 +2,7 @@
 
 Un colorscheme minimale e personalizzato per Neovim, scritto in Lua con supporto Treesitter.
 
-![screenshot](./screenshot.png)
+![screenshot](./schermata.png)
 
 ## Installazione
 
@@ -63,14 +63,14 @@ mastyxtheme.nvim/
 
 ## Palette
 
-| Colore | Hex |
-|---|---|
+| Colore     | Hex       |
+| ---------- | --------- |
 | Background | `#181825` |
 | Foreground | `#cdd6f4` |
-| Red | `#c72f00` |
-| Green | `#408243` |
-| Yellow | `#cfbb67` |
-| Orange | `#ee9245` |
+| Red        | `#c72f00` |
+| Green      | `#408243` |
+| Yellow     | `#cfbb67` |
+| Orange     | `#ee9245` |
 | Light Blue | `#6f9af2` |
 
 ## Licenza
