@@ -9,9 +9,9 @@ function M.setup()
       vim.cmd("syntax reset")
   end
 
-  vim.o.terguicolor = true
+  vim.o.termguicolors = true
   vim.o.background = "dark"
-  vim.g.collor_name = "mastyxtheme"
+  vim.g.colors_name = "mastyxtheme"
 
   local c = require("mastyxtheme.palette")
   local hl = vim.api.nvim_set_hl
@@ -23,10 +23,10 @@ function M.setup()
   -- per linguaggi senza threesitter 
   hl(0, "Constant", {fg = c.orange})
   hl(0, "String", {fg = c.light_orange})
-  hl(0, "Function", {fg = c.lught_red})
+  hl(0, "Function", {fg = c.light_red})
   hl(0, "Statement", {fg = c.yellow, bold=true})
-  hl(0, "Identifieer", {fg = c.light_green})
-  hl(0, "Keyword", {fg=c.blue})
+  hl(0, "Identifier", {fg = c.light_green})
+  hl(0, "Keyword", {fg= c.blue})
   hl(0, "Type", {fg = c.red, bold=true})
   hl(0, "Special", {fg=c.red})
   hl(0, "Error", {fg= "#ffffff", bg = c.red})
