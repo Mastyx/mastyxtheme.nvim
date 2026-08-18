@@ -1,12 +1,13 @@
+
 -- logica principale e setup opzionale
--- il file prende i colore da palette e li applica
+-- il file prende i colori da palette e li applica
 
 local M = {}
 
 function M.setup()
   vim.cmd("highlight clear")
   if vim.fn.exists("syntax_on") then
-      vim.cmd("syntax reset")
+    vim.cmd("syntax reset")
   end
 
   vim.o.termguicolors = true
@@ -15,28 +16,240 @@ function M.setup()
 
   local c = require("mastyxtheme.palette")
   local hl = vim.api.nvim_set_hl
-  
-  -- Base Editor -- 
+
+  -- ============================================================
+  -- Editor UI di base
+  -- ============================================================
   hl(0, "Normal", { fg = c.fg, bg = c.bg })
-  hl(0, "Comment", {fg = c.light_blue, italic = true })
+  hl(0, "NormalFloat", { fg = c.fg, bg = c.bg_float })
+  hl(0, "NormalNC", { fg = c.fg, bg = c.bg })
+  hl(0, "FloatBorder", { fg = c.border, bg = c.bg_float })
+  hl(0, "FloatTitle", { fg = c.light_blue, bg = c.bg_float, bold = true })
 
-  -- per linguaggi senza threesitter 
-  hl(0, "Constant", {fg = c.orange})
-  hl(0, "String", {fg = c.light_orange})
-  hl(0, "Function", {fg = c.light_red})
-  hl(0, "Statement", {fg = c.yellow, bold=true})
-  hl(0, "Identifier", {fg = c.light_green})
-  hl(0, "Keyword", {fg= c.blue})
-  hl(0, "Type", {fg = c.red, bold=true})
-  hl(0, "Special", {fg=c.red})
-  hl(0, "Error", {fg= "#ffffff", bg = c.red})
-  -- threesitter 
-  hl(0, "@variable", {fg = c.green})
-  hl(0, "@variable.member", {fg=c.light_green})
+  hl(0, "Cursor", { fg = c.bg, bg = c.fg })
+  hl(0, "CursorLine", { bg = c.bg_highlight })
+  hl(0, "CursorLineNr", { fg = c.light_yellow, bold = true })
+  hl(0, "CursorColumn", { bg = c.bg_highlight })
+  hl(0, "LineNr", { fg = c.grey })
+  hl(0, "SignColumn", { fg = c.grey, bg = c.bg })
+  hl(0, "ColorColumn", { bg = c.bg_highlight })
 
- end
+  hl(0, "Visual", { bg = c.bg_visual })
+  hl(0, "VisualNOS", { bg = c.bg_visual })
+
+  hl(0, "Search", { fg = c.bg, bg = c.yellow })
+  hl(0, "IncSearch", { fg = c.bg, bg = c.orange })
+  hl(0, "CurSearch", { fg = c.bg, bg = c.orange })
+  hl(0, "Substitute", { fg = c.bg, bg = c.red })
+
+  hl(0, "MatchParen", { fg = c.light_orange, bold = true })
+
+  hl(0, "StatusLine", { fg = c.fg, bg = c.bg_dark })
+  hl(0, "StatusLineNC", { fg = c.grey, bg = c.bg_dark })
+  hl(0, "WinSeparator", { fg = c.border, bg = c.bg })
+  hl(0, "VertSplit", { fg = c.border, bg = c.bg })
+
+  hl(0, "TabLine", { fg = c.grey, bg = c.bg_dark })
+  hl(0, "TabLineSel", { fg = c.fg, bg = c.bg, bold = true })
+  hl(0, "TabLineFill", { bg = c.bg_dark })
+
+  hl(0, "Pmenu", { fg = c.fg, bg = c.bg_float })
+  hl(0, "PmenuSel", { fg = c.bg, bg = c.light_blue, bold = true })
+  hl(0, "PmenuSbar", { bg = c.bg_dark })
+  hl(0, "PmenuThumb", { bg = c.grey })
+
+  hl(0, "Folded", { fg = c.grey, bg = c.bg_highlight, italic = true })
+  hl(0, "FoldColumn", { fg = c.grey, bg = c.bg })
+
+  hl(0, "NonText", { fg = c.grey_dark })
+  hl(0, "Whitespace", { fg = c.grey_dark })
+  hl(0, "EndOfBuffer", { fg = c.bg })
+  hl(0, "SpecialKey", { fg = c.grey_dark })
+
+  hl(0, "Title", { fg = c.light_blue, bold = true })
+  hl(0, "Directory", { fg = c.light_blue })
+
+  hl(0, "ErrorMsg", { fg = c.red, bold = true })
+  hl(0, "WarningMsg", { fg = c.orange, bold = true })
+  hl(0, "ModeMsg", { fg = c.fg })
+  hl(0, "MoreMsg", { fg = c.green })
+  hl(0, "Question", { fg = c.light_blue })
+
+  hl(0, "DiffAdd", { fg = c.green, bg = c.bg_highlight })
+  hl(0, "DiffChange", { fg = c.yellow, bg = c.bg_highlight })
+  hl(0, "DiffDelete", { fg = c.red, bg = c.bg_highlight })
+  hl(0, "DiffText", { fg = c.light_yellow, bg = c.bg_visual })
+
+  hl(0, "SpellBad", { sp = c.red, undercurl = true })
+  hl(0, "SpellCap", { sp = c.yellow, undercurl = true })
+  hl(0, "SpellLocal", { sp = c.light_blue, undercurl = true })
+  hl(0, "SpellRare", { sp = c.light_orange, undercurl = true })
+
+  -- ============================================================
+  -- Sintassi generica (per linguaggi senza Treesitter)
+  -- ============================================================
+  hl(0, "Comment", { fg = c.light_blue, italic = true })
+
+  hl(0, "Constant", { fg = c.orange })
+  hl(0, "String", { fg = c.light_orange })
+  hl(0, "Character", { fg = c.light_orange })
+  hl(0, "Number", { fg = c.light_orange })
+  hl(0, "Boolean", { fg = c.orange, bold = true })
+  hl(0, "Float", { fg = c.light_orange })
+
+  hl(0, "Function", { fg = c.light_red })
+  hl(0, "Statement", { fg = c.yellow, bold = true })
+  hl(0, "Conditional", { fg = c.yellow })
+  hl(0, "Repeat", { fg = c.yellow })
+  hl(0, "Label", { fg = c.yellow })
+  hl(0, "Operator", { fg = c.fg })
+  hl(0, "Keyword", { fg = c.blue, bold = true })
+  hl(0, "Exception", { fg = c.red, bold = true })
+
+  hl(0, "Identifier", { fg = c.light_green })
+  hl(0, "PreProc", { fg = c.light_blue })
+  hl(0, "Include", { fg = c.light_blue })
+  hl(0, "Define", { fg = c.light_blue })
+  hl(0, "Macro", { fg = c.light_blue })
+  hl(0, "PreCondit", { fg = c.light_blue })
+
+  hl(0, "Type", { fg = c.red, bold = true })
+  hl(0, "StorageClass", { fg = c.red })
+  hl(0, "Structure", { fg = c.red })
+  hl(0, "Typedef", { fg = c.red })
+
+  hl(0, "Special", { fg = c.red })
+  hl(0, "SpecialChar", { fg = c.red })
+  hl(0, "Tag", { fg = c.light_blue })
+  hl(0, "Delimiter", { fg = c.fg })
+  hl(0, "Underlined", { fg = c.light_blue, underline = true })
+  hl(0, "Ignore", { fg = c.grey })
+  hl(0, "Error", { fg = "#ffffff", bg = c.red })
+  hl(0, "Todo", { fg = c.bg, bg = c.light_yellow, bold = true })
+
+  -- ============================================================
+  -- Diagnostica LSP
+  -- ============================================================
+  hl(0, "DiagnosticError", { fg = c.red })
+  hl(0, "DiagnosticWarn", { fg = c.orange })
+  hl(0, "DiagnosticInfo", { fg = c.light_blue })
+  hl(0, "DiagnosticHint", { fg = c.light_green })
+  hl(0, "DiagnosticOk", { fg = c.green })
+
+  hl(0, "DiagnosticUnderlineError", { sp = c.red, undercurl = true })
+  hl(0, "DiagnosticUnderlineWarn", { sp = c.orange, undercurl = true })
+  hl(0, "DiagnosticUnderlineInfo", { sp = c.light_blue, undercurl = true })
+  hl(0, "DiagnosticUnderlineHint", { sp = c.light_green, undercurl = true })
+
+  hl(0, "DiagnosticVirtualTextError", { fg = c.red, bg = c.bg_highlight })
+  hl(0, "DiagnosticVirtualTextWarn", { fg = c.orange, bg = c.bg_highlight })
+  hl(0, "DiagnosticVirtualTextInfo", { fg = c.light_blue, bg = c.bg_highlight })
+  hl(0, "DiagnosticVirtualTextHint", { fg = c.light_green, bg = c.bg_highlight })
+
+  -- ============================================================
+  -- Treesitter
+  -- ============================================================
+  hl(0, "@variable", { fg = c.green })
+  hl(0, "@variable.member", { fg = c.light_green })
+  hl(0, "@variable.parameter", { fg = c.fg, italic = true })
+  hl(0, "@variable.builtin", { fg = c.red, italic = true })
+
+  hl(0, "@constant", { fg = c.orange })
+  hl(0, "@constant.builtin", { fg = c.orange, bold = true })
+  hl(0, "@boolean", { fg = c.orange, bold = true })
+  hl(0, "@number", { fg = c.light_orange })
+  hl(0, "@float", { fg = c.light_orange })
+
+  hl(0, "@string", { fg = c.light_orange })
+  hl(0, "@string.escape", { fg = c.red })
+  hl(0, "@character", { fg = c.light_orange })
+
+  hl(0, "@function", { fg = c.light_red })
+  hl(0, "@function.builtin", { fg = c.light_red, italic = true })
+  hl(0, "@function.call", { fg = c.light_red })
+  hl(0, "@method", { fg = c.light_red })
+  hl(0, "@method.call", { fg = c.light_red })
+  hl(0, "@constructor", { fg = c.red })
+  hl(0, "@parameter", { fg = c.fg, italic = true })
+
+  hl(0, "@keyword", { fg = c.blue, bold = true })
+  hl(0, "@keyword.function", { fg = c.blue, bold = true })
+  hl(0, "@keyword.return", { fg = c.blue, bold = true })
+  hl(0, "@keyword.operator", { fg = c.blue })
+  hl(0, "@conditional", { fg = c.yellow })
+  hl(0, "@repeat", { fg = c.yellow })
+  hl(0, "@exception", { fg = c.red, bold = true })
+
+  hl(0, "@operator", { fg = c.fg })
+  hl(0, "@punctuation.delimiter", { fg = c.fg })
+  hl(0, "@punctuation.bracket", { fg = c.fg })
+  hl(0, "@punctuation.special", { fg = c.light_blue })
+
+  hl(0, "@type", { fg = c.red, bold = true })
+  hl(0, "@type.builtin", { fg = c.red, italic = true })
+  hl(0, "@storageclass", { fg = c.red })
+  hl(0, "@attribute", { fg = c.light_blue })
+  hl(0, "@property", { fg = c.light_green })
+  hl(0, "@field", { fg = c.light_green })
+
+  hl(0, "@namespace", { fg = c.light_blue })
+  hl(0, "@module", { fg = c.light_blue })
+  hl(0, "@include", { fg = c.light_blue })
+
+  hl(0, "@tag", { fg = c.light_blue })
+  hl(0, "@tag.attribute", { fg = c.light_green, italic = true })
+  hl(0, "@tag.delimiter", { fg = c.fg })
+
+  hl(0, "@comment", { fg = c.light_blue, italic = true })
+  hl(0, "@comment.todo", { fg = c.bg, bg = c.light_yellow, bold = true })
+  hl(0, "@comment.warning", { fg = c.bg, bg = c.orange, bold = true })
+  hl(0, "@comment.error", { fg = c.bg, bg = c.red, bold = true })
+
+  hl(0, "@markup.heading", { fg = c.light_blue, bold = true })
+  hl(0, "@markup.strong", { bold = true })
+  hl(0, "@markup.italic", { italic = true })
+  hl(0, "@markup.link", { fg = c.light_green, underline = true })
+  hl(0, "@markup.raw", { fg = c.light_orange })
+
+  -- ============================================================
+  -- LSP semantic tokens (in aggiunta a Treesitter)
+  -- ============================================================
+  hl(0, "@lsp.type.class", { fg = c.red })
+  hl(0, "@lsp.type.interface", { fg = c.red, italic = true })
+  hl(0, "@lsp.type.enum", { fg = c.red })
+  hl(0, "@lsp.type.parameter", { fg = c.fg, italic = true })
+  hl(0, "@lsp.type.property", { fg = c.light_green })
+  hl(0, "@lsp.type.variable", { fg = c.green })
+  hl(0, "@lsp.typemod.variable.readonly", { fg = c.orange })
+
+  -- ============================================================
+  -- Integrazioni plugin (opzionali: se il plugin non è installato
+  -- questi gruppi restano semplicemente inutilizzati, nessun errore)
+  -- ============================================================
+  -- gitsigns.nvim
+  hl(0, "GitSignsAdd", { fg = c.green })
+  hl(0, "GitSignsChange", { fg = c.yellow })
+  hl(0, "GitSignsDelete", { fg = c.red })
+
+  -- nvim-tree / neo-tree
+  hl(0, "NvimTreeFolderIcon", { fg = c.light_blue })
+  hl(0, "NvimTreeFolderName", { fg = c.fg })
+  hl(0, "NvimTreeOpenedFolderName", { fg = c.light_blue, bold = true })
+  hl(0, "NvimTreeIndentMarker", { fg = c.grey_dark })
+  hl(0, "NeoTreeDirectoryIcon", { fg = c.light_blue })
+  hl(0, "NeoTreeDirectoryName", { fg = c.fg })
+
+  -- telescope.nvim
+  hl(0, "TelescopeBorder", { fg = c.border })
+  hl(0, "TelescopePromptBorder", { fg = c.border })
+  hl(0, "TelescopeSelection", { bg = c.bg_visual })
+  hl(0, "TelescopeMatching", { fg = c.orange, bold = true })
+
+  -- which-key.nvim
+  hl(0, "WhichKey", { fg = c.light_blue, bold = true })
+  hl(0, "WhichKeyGroup", { fg = c.light_green })
+  hl(0, "WhichKeyDesc", { fg = c.fg })
+  hl(0, "WhichKeySeparator", { fg = c.grey })
+end
 
 return M
-
-
-
