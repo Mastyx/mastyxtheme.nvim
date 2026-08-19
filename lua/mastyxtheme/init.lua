@@ -1,7 +1,6 @@
 
 -- logica principale e setup opzionale
 -- il file prende i colori da palette e li applica
-
 local M = {}
 
 function M.setup()
@@ -52,8 +51,9 @@ function M.setup()
   hl(0, "TabLine", { fg = c.grey, bg = c.bg_dark })
   hl(0, "TabLineSel", { fg = c.fg, bg = c.bg, bold = true })
   hl(0, "TabLineFill", { bg = c.bg_dark })
-
-  hl(0, "Pmenu", { fg = c.fg, bg = c.bg_float })
+  
+  -- sezione popup autocompletamento 
+  hl(0, "Pmenu", { fg = c.fg, bg = c.blue })
   hl(0, "PmenuSel", { fg = c.bg, bg = c.light_blue, bold = true })
   hl(0, "PmenuSbar", { bg = c.bg_dark })
   hl(0, "PmenuThumb", { bg = c.grey })
