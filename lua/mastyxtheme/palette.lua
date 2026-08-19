@@ -7,7 +7,7 @@ local M = {}
 M.bg = "#050D12" -- sfondo 
 M.fg = "#e5e6e1"
 
-M.blue = "#06528c" 
+M.blue = "#2f7fd4" 
 M.light_blue = "#6f9af2"
 M.light_orange = "#ffda8b"
 M.orange = "#ee9245"
