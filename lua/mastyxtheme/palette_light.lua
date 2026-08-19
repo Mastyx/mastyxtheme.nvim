@@ -35,17 +35,19 @@ M.grey = "#6b7785"          -- numeri di riga, testo secondario
 M.grey_dark = "#c9d3dd"     -- whitespace, non-text, indent guide (chiaro e discreto)
 
 return M
-  --]]
+
+-------- fine vecchie colorazioni --]]
 
 -- palette per la variante "light" del tema
 -- sfondo chiaro con leggera tendenza all'azzurro, testo scuro
-local M = {}
+local M = {} 
+
 
 -- colori principali
-M.bg = "#e9eff5"          -- sfondo: chiaro, non troppo luminoso, tendente all'azzurro
-M.fg = "#05070a"           -- testo normale: nero pieno, massimo contrasto sullo sfondo chiaro
+M.bg = "#e9eff5"          -- sfondo: chiaro, 
+M.fg = "#05070a"           -- testo normale: nero pieno, massimo contrasto 
 
-M.blue = "#14477d"         -- keyword (fn, use, mod, let, enum...) - un tono più scuro
+M.blue = "#14477d"         -- keyword (fn, use, mod, let, enum...) - 
 M.light_blue = "#2c62b3"   -- commenti, link, info - un tono più scuro
 
 M.orange = "#a8540a"       -- parentesi / delimitatori - un tono più scuro
@@ -64,9 +66,9 @@ M.light_yellow = "#967d2e" -- todo - un tono più scuro
 M.bg_dark = "#dbe4ee"       -- statusline / tabline
 M.bg_highlight = "#dde6f0"  -- cursorline, colorcolumn, folded
 M.bg_visual = "#c7d9ee"     -- selezione visuale
-M.bg_float = "#f2f6fa"      -- popup, floating window (leggermente più chiaro dello sfondo)
-M.border = "#9aacbe"        -- bordi finestre/float - un tono più scuro, più definito
-M.grey = "#545f6b"          -- numeri di riga, testo secondario - un tono più scuro
+M.bg_float = "#c3d2e0"      -- popup, floating window (leggermente più chiaro dello sfondo)
+M.border = "#2c70bf"        -- bordi finestre/float -
+M.grey = "#545f6b"          -- numeri di riga, testo secondario - 
 M.grey_dark = "#c9d3dd"     -- whitespace, non-text, indent guide (invariato, resta discreto)
 
 return M
