@@ -20,7 +20,7 @@ function M.setup()
   -- ============================================================
   -- Editor UI di base
   -- ============================================================
-  hl(0, "Normal", { fg = c.fg, bg = c.bg })
+  hl(0, "Normal", { fg = c.fg, bg = c.bg, bold = true})
   hl(0, "NormalFloat", { fg = c.fg, bg = c.bg_float })
   hl(0, "NormalNC", { fg = c.fg, bg = c.bg })
   hl(0, "FloatBorder", { fg = c.border, bg = c.bg_float })
