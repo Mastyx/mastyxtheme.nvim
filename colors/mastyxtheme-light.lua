@@ -1,0 +1,1 @@
+require("mastyxtheme.light").setup()
