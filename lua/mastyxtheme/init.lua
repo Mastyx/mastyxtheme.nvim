@@ -88,7 +88,7 @@ function M.setup()
   -- ============================================================
   -- Sintassi generica (per linguaggi senza Treesitter)
   -- ============================================================
-  hl(0, "Comment", { fg = c.gray, italic = true })
+  hl(0, "Comment", { fg = c.grey, italic = true })
 
   hl(0, "Constant", { fg = c.orange })
   hl(0, "String", { fg = c.light_orange })
@@ -200,7 +200,7 @@ function M.setup()
   hl(0, "@tag.attribute", { fg = c.light_green, italic = true })
   hl(0, "@tag.delimiter", { fg = c.fg })
 
-  hl(0, "@comment", { fg = c.light_blue, italic = true })
+  hl(0, "@comment", { fg = c.grey, italic = true })
   hl(0, "@comment.todo", { fg = c.bg, bg = c.light_yellow, bold = true })
   hl(0, "@comment.warning", { fg = c.bg, bg = c.orange, bold = true })
   hl(0, "@comment.error", { fg = c.bg, bg = c.red, bold = true })
