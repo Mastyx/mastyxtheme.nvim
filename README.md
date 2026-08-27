@@ -3,7 +3,7 @@
 Un colorscheme minimale e personalizzato per Neovim, scritto in Lua con supporto Treesitter.
 
 ![screenshot](./mastyxtheme.png)
-normale version
+normal version
 ![screenshot](./mastyxtheme_light.png)
 light version
 
