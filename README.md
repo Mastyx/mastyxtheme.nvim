@@ -6,6 +6,8 @@ Un colorscheme minimale e personalizzato per Neovim, scritto in Lua con supporto
 normal version
 ![screenshot](./mastyxtheme_light.png)
 light version
+![screenshot](./mastyxtheme_cappuccino.png)
+cappuccino version
 
 ## Installazione
 
@@ -48,8 +50,9 @@ Poi in Neovim:
 
 Il tema è disponibile in due versioni:
 
-- **`mastyxtheme`** — variante dark (default)
-- **`mastyxtheme-light`** — variante light, sfondo chiaro azzurrino con testo in grassetto per maggior contrasto
+- **`mastyxtheme`** - variante dark (default)
+- **`mastyxtheme-light`** - variante light, sfondo chiaro azzurrino con testo in grassetto per maggior contrasto
+- **`mastyxtheme-cappuccino`** - variante con sfondo crema cappuccino
 
 Per usare la variante light:
 
